@@ -3,19 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.test</groupId>
-	<artifactId>testApp</artifactId>
-	<packaging>war</packaging>
+	<groupId>com.example</groupId>
+	<artifactId>myapp</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>testApp</name>
+	<name>myapp</name>
 
 	<prerequisites>
 		<maven>3</maven>
 	</prerequisites>
 
 	<properties>
-		<vaadin.version>8.1.0</vaadin.version>
-		<vaadin.plugin.version>8.1.0</vaadin.plugin.version>
+		<vaadin.version>8.1.1</vaadin.version>
+		<vaadin.plugin.version>8.1.1</vaadin.plugin.version>
 		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -65,6 +64,11 @@
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.json</groupId>
+    		<artifactId>json</artifactId>
+    		<version>20170516</version>
 		</dependency>
 	</dependencies>
 
@@ -170,4 +174,5 @@
 		</profile>
 	</profiles>
 
+	<packaging>war</packaging>
 </project>

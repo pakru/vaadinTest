@@ -1,6 +1,12 @@
 package com.test.testApp;
 
+import java.io.IOException;
+
 import javax.servlet.annotation.WebServlet;
+
+import org.json.JSONException;
+
+import com.test.testApp.weatherDataGetter;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -48,14 +54,11 @@ public class MyUI extends UI {
 
         
         //layout.setSizeFull();
-        //layout.setSpacing(true);
-        
-       
+        //layout.setSpacing(true);             
         
         
         layout.addComponents(name, button);
-        
-        
+                
         layout.setComponentAlignment(name, Alignment.TOP_CENTER);
         layout.setComponentAlignment(button, Alignment.TOP_CENTER);
         //layout.setComponentAlignment(button, Alignment.);
@@ -85,11 +88,20 @@ public class MyUI extends UI {
     	
     	updateBtn.addClickListener(clickEvent -> {
     		Notification notify = new Notification("Updating Weather Data");
+    		try {
+				weatherDataGetter.doRequest();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		notify.setDelayMsec(1000);
     		notify.setPosition(Position.BOTTOM_RIGHT);
     		notify.show(Page.getCurrent());
     		
-    		
+    		    		
     	});
     	   	
     	weatherLayout.addComponents(layoutTitle, currentWeatherText, tommorowWeatherText, updateBtn);    	
@@ -115,7 +127,7 @@ public class MyUI extends UI {
     
     
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+    @WebServlet(urlPatterns = "/*", name = "MyTestApp", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
     }
